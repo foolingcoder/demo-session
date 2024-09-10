@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: demo-session
+
+  jpa:
+    # Provide database platform that is being used
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      # New database is created when application starts and destroyed when application is stopped
+      ddl-auto: update
+    # Show sql when spring data jpa performs query
+    show-sql: true
+    properties:
+      hibernate:
+        # Format queries
+        format_sql: true
+  datasource:
+    # URL connection to database (spring-demosession is database name)
+    url: jdbc:postgresql://127.0.0.1:5432/authdemosession
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: postgres
+
+  session:
+    store-type: jdbc
+    jdbc:
+      table-name: SPRING_SESSION
+      initialize-schema: always
+      flush-mode: on_save
+
+server:
+  port: 8082
